@@ -1,0 +1,1 @@
+import{t as e}from"./index-PzIGqyb5.js";var t={};function n(e,t){return`blogs`}var r=e(t,[[`render`,n]]);export{r as default};
