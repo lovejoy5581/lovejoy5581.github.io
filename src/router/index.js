@@ -30,7 +30,7 @@ const routeConfig = [
                     icon: Project,
                 },
             },
-            
+
             {
                 path: "aboutus",
                 component: () => import("@/views/AboutUs.vue"),
@@ -47,7 +47,7 @@ const routeConfig = [
                     icon: "Star",
                 },
             },
-            
+
             {
                 path: "blogs",
                 component: () => import("@/views/Blogs.vue"),
