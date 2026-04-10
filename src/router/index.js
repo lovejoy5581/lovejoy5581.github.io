@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from "vue-router";
+import { createRouter, createWebHashHistory } from "vue-router";
 import layout from "@/components/layout.vue";
 import {
     MapLocation,
@@ -62,7 +62,7 @@ const routeConfig = [
 
 // 创建路由实例
 const router = createRouter({
-    history: createWebHistory(),
+    history: createWebHashHistory(),
     routes: [...routeConfig],
 });
 

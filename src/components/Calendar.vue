@@ -122,29 +122,33 @@ const weekdays = ["一", "二", "三", "四", "五", "六", "日"];
 const daysInMonth = ref([]);
 const volume = ref(50);
 
-// 音乐播放相关
+// 音乐播放相关 - 使用免费音频CDN
 const songs = ref([
     {
         id: 1,
         title: "Close To You",
-        url: "@/assets/music/music1.mp3",
+        url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
     },
     {
         id: 2,
         title: "Yesterday Once More",
-        url: "https://example.com/yesterday-once-more.mp3",
+        url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
     },
     {
         id: 3,
         title: "My Heart Will Go On",
-        url: "https://example.com/my-heart-will-go-on.mp3",
+        url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
     },
     {
         id: 4,
         title: "Shape of You",
-        url: "https://example.com/shape-of-you.mp3",
+        url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3",
     },
-    { id: 5, title: "Perfect", url: "https://example.com/perfect.mp3" },
+    {
+        id: 5,
+        title: "Perfect",
+        url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3",
+    },
 ]);
 const currentSong = ref(1);
 const isPlaying = ref(false);
