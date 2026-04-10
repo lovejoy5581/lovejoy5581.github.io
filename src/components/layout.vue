@@ -5,19 +5,12 @@
             <div class="color2"></div>
         </div>
         <div class="content">
-            <el-container>
-                <el-aside width="320px"><SideBar /></el-aside>
-                <el-main><MainBar /></el-main>
-                <el-aside width="320px"><Calendar /></el-aside>
-            </el-container>
+            <router-view></router-view>
         </div>
     </div>
 </template>
 
 <script setup>
-import SideBar from "./SideBar.vue";
-import MainBar from "./MainBar.vue";
-import Calendar from "./Calendar.vue";
 import { ref, provide, watch } from "vue";
 
 // 从localStorage读取颜色值，如果没有则使用默认值
@@ -42,7 +35,7 @@ $offset_y: 8px;
 .container {
     position: relative;
     min-height: 100vh;
-    background: #badbec;
+    background: #e9eaeb;
     overflow: hidden;
     z-index: 2;
     .background {

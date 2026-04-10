@@ -18,6 +18,7 @@
                         class="color-picker-popup"
                         @change="updateColor"
                         size="small"
+                        style="opacity: 0;"
                     >
                         <template #reference>
                             <el-button type="text" class="color-button-icon">
@@ -77,7 +78,7 @@
         <div class="music-player">
             <div class="music-container">
                 <div class="music-icon">
-                    <el-icon class="music-note"><Headset /></el-icon>
+                    <el-icon><Headset /></el-icon>
                 </div>
                 <div class="music-info">
                     <select
@@ -165,7 +166,7 @@ const togglePlay = () => {
 };
 
 // 播放音乐
-const playMusic = () => {
+const playMusic = async () => {
     if (!audio.value) {
         audio.value = new Audio();
         audio.value.addEventListener("timeupdate", updateProgress);
@@ -175,13 +176,22 @@ const playMusic = () => {
         });
     }
 
+    // 先停止当前播放的音乐
+    if (audio.value) {
+        audio.value.pause();
+        audio.value.currentTime = 0;
+    }
+
     const song = songs.value.find((s) => s.id === currentSong.value);
     if (song) {
         audio.value.src = song.url;
-        audio.value.play().catch((error) => {
+        try {
+            await audio.value.play();
+            isPlaying.value = true;
+        } catch (error) {
             console.error("播放失败:", error);
-        });
-        isPlaying.value = true;
+            isPlaying.value = false;
+        }
     }
 };
 
@@ -195,9 +205,8 @@ const pauseMusic = () => {
 
 // 切换歌曲
 const changeSong = () => {
-    if (isPlaying.value) {
-        playMusic();
-    }
+    playMusic();
+    isPlaying.value = true;
     progress.value = 0;
 };
 
@@ -302,6 +311,10 @@ onMounted(() => {
             margin-right: 50px;
             transition: all 0.3s;
 
+            .el-icon {
+                color: #fff;
+                margin-right: 10px;
+            }
             &:hover {
                 background-color: var(--color);
                 border-color: var(--color);
@@ -618,9 +631,9 @@ onMounted(() => {
             }
 
             .music-icon {
-                .music-note {
+                .el-icon {
                     font-size: 24px;
-                    background: linear-gradient(
+                    background-color: linear-gradient(
                         135deg,
                         var(--color) 0%,
                         color-mix(in srgb, var(--color), #6743f5 30%) 50%,
@@ -629,6 +642,7 @@ onMounted(() => {
                     -webkit-background-clip: text;
                     -webkit-text-fill-color: transparent;
                     background-clip: text;
+                    margin-right: 4px;
                 }
             }
 

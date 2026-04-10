@@ -12,8 +12,17 @@ import {
 const routeConfig = [
     {
         path: "/",
+        redirect: "/home",
         component: layout,
         children: [
+            {
+                path: "home",
+                component: () => import("@/views/Home.vue"),
+                meta: {
+                    title: "首页",
+                    icon: "House",
+                },
+            },
             {
                 path: "articles",
                 component: () => import("@/views/Articles.vue"),
