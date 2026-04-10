@@ -1,0 +1,1 @@
+import{n as e}from"./index-DU51x9hE.js";var t={};function n(e,t){return`Projects`}var r=e(t,[[`render`,n]]);export{r as default};
